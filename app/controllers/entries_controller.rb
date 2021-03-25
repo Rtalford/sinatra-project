@@ -1,5 +1,6 @@
 class EntriesController < ApplicationController
     
+    #index route
     get '/posts' do
         @entries = Entry.all
         erb :index
@@ -8,6 +9,8 @@ class EntriesController < ApplicationController
     get '/posts/new' do 
         erb : 'entries/new'
     end 
+
+    #show route
 
     get '/posts/:id' do 
         @entry = Entry.find(params[:id])
