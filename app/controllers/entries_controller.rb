@@ -31,10 +31,14 @@ class EntriesController < ApplicationController
     end 
 
     patch '/posts/:id' do 
-
+        @entry = Entry.find_by(id:params[:id])
+        @entry.update(title: params[:title], content: params[:content])
+        redirect "/entries/#{@entry.id}"
     end 
 
     delete '/post/:id' do 
-    
+        @entry = Entry.find_by(id:params[:id])
+        @entry.destroy
+        redirect '/posts'
     end 
 end
