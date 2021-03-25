@@ -20,11 +20,13 @@ class EntriesController < ApplicationController
     end 
 
     post '/posts' do
-
+       @entry = Entry.new(params)
+       @entry.save
+       redirect "/entries/#{@entry.id}"
     end 
 
     get 'posts/:id/edit' do
-
+        
     end 
 
     patch '/posts/:id' do 
