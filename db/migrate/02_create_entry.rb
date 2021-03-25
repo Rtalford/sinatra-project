@@ -1,4 +1,4 @@
-class CreateEntriess < ActiveRecord::Migrations[5.2]
+class CreateEntries < ActiveRecord::Migrations[5.2]
     def change 
         create_table :entries do |t|
             t.string :title 
