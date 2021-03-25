@@ -26,7 +26,8 @@ class EntriesController < ApplicationController
     end 
 
     get 'posts/:id/edit' do
-        
+        @entry = Entry.find_by(id:params[:id])
+        erb :"/post/edit"
     end 
 
     patch '/posts/:id' do 

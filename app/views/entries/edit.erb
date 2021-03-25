@@ -1,0 +1,6 @@
+<form action="/entries" <%= @entry.id %>" method="entry"
+    <input type="hidden" name="_method" value="patch">
+    Title: <input type= "text" name="title" value="<%= @entry.title%>">
+    Content: <textarea name="content"><%= @entry.content %></textarea>
+    <input type= "submit" value= "Edit Entry">
+</form>
