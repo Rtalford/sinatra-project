@@ -9,7 +9,7 @@ class EntriesController < ApplicationController
     #new route
 
     get '/posts/new' do 
-        erb : 'entries/new'
+        erb :'entries/new'
     end 
 
     #show route
