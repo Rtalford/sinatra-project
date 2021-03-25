@@ -3,8 +3,10 @@ class EntriesController < ApplicationController
     #index route
     get '/posts' do
         @entries = Entry.all
-        erb :index
+        erb :'entries/index'
     end 
+
+    #new route
 
     get '/posts/new' do 
         erb : 'entries/new'
