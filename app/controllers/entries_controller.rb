@@ -1,7 +1,8 @@
 class EntriesController < ApplicationController
     
-    #index route
-    get '/posts' do
+    #index route 
+
+    get '/posts' do 
         @entries = Entry.all
         erb :'entries/index'
     end 
