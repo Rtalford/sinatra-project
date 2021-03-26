@@ -7,4 +7,12 @@ class UsersController < ApplicationController
     post '/signup' do 
 
     end 
+
+    get '/login' do 
+        erb :"users/login"
+    end 
+    
+    post '/login' do 
+        user = User.find_by_email(params[:email])
+    end 
 end 
