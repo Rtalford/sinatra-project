@@ -13,6 +13,8 @@ class EntriesController < ApplicationController
         erb :'entries/new'
     end 
 
+    #create?
+
     #show route
 
     get '/entries/:id' do 
