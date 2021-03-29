@@ -30,5 +30,6 @@ class UsersController < ApplicationController
         else
             flash[:error] = "Invalid login information"
             redirect '/login'
+        end
     end 
 end 
