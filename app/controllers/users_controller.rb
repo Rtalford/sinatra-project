@@ -13,7 +13,7 @@ class UsersController < ApplicationController
         else
             user.save
             session[:user_id] = user_id
-            redirect '/posts'
+            redirect '/entries'
         end 
 
     end 
@@ -24,5 +24,11 @@ class UsersController < ApplicationController
     
     post '/login' do 
         user = User.find_by_email(params[:email])
+        if user && user.authenicate(params[:password])
+            session[:user_id] = user.user_id
+            redirect '/entries'
+        else
+            flash[:error] = "Invalid login information"
+            redirect '/login'
     end 
 end 
