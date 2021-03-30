@@ -24,6 +24,7 @@ class EntriesController < ApplicationController
 
     post '/entries' do
        @entry = Entry.new(params)
+       @entry.user_id = session[:user_id]
        @entry.save
        redirect "/entries/#{@entry.id}"
     end 
