@@ -13,7 +13,7 @@ class EntriesController < ApplicationController
         erb :'entries/new'
     end 
 
-    #create?
+    
 
     #show route
 
@@ -28,6 +28,8 @@ class EntriesController < ApplicationController
        @entry.save
        redirect "/entries/#{@entry.id}"
     end 
+
+    #create
 
     get 'entries/:id/edit' do
         @entry = Entry.find_by(id:params[:id])
