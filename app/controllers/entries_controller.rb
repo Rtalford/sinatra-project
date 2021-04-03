@@ -37,13 +37,19 @@ class EntriesController < ApplicationController
             erb :"/post/edit"
         else
             flash[:error] = "YOu are not the owner of this account"
-            redirect '/posts'
+            redirect '/entries'
     end 
 
     patch '/entries/:id' do 
         @entry = Entry.find_by_id(params[:id])
-        @entry.update(title: params[:title], content: params[:content])
-        redirect "/entries/#{@entry.id}"
+        if @entry.user == current_user
+            @entry.update(title: params[:title], content: params[:content])
+            redirect "/entries/#{@entry.id}"
+        else
+            flash[:error] = "YOu are not the owner of this account"
+            redirect '/entries'
+        end
+       
     end 
 
     delete '/entries/:id' do 
