@@ -33,7 +33,11 @@ class EntriesController < ApplicationController
 
     get 'entries/:id/edit' do
         @entry = Entry.find_by(id:params[:id])
-        erb :"/post/edit"
+        if @entry.user == current_user
+            erb :"/post/edit"
+        else
+            flash[:error] = "YOu are not the owner of this account"
+            redirect '/posts'
     end 
 
     patch '/entries/:id' do 
