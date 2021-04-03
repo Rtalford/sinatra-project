@@ -15,6 +15,18 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
+  helpers do 
+
+    def get_entry
+      @entry = Entry.find_by(id:params[:id])
+    end 
+
+    def current_user 
+      @current_user ||= User.find_by_id(session[:user_id])
+    end 
+  
+  end 
+
 end
 
 # git add . 
