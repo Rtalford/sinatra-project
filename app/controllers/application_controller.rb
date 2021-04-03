@@ -17,13 +17,20 @@ class ApplicationController < Sinatra::Base
 
   helpers do 
 
-    def get_entry
-      @entry = Entry.find_by(id:params[:id])
-    end 
+   
 
     def current_user 
       @current_user ||= User.find_by_id(session[:user_id])
     end 
+
+    def logged_in?
+      !!session[:author_id]
+    end 
+
+
+    # def get_entry
+    #   @entry = Entry.find_by(id:params[:id])
+    # end 
   
   end 
 

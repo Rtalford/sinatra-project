@@ -2,6 +2,7 @@
 
 <% @entries.each do |p| %>
     <p><%= p.title %> - <%= p.id %> 
+    <% if current_user == p.user %>
     <a href="/entries/<%= p.id %>/edit">Edit</a> 
     </p>
 <% end %>

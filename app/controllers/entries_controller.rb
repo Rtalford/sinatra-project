@@ -37,7 +37,7 @@ class EntriesController < ApplicationController
     end 
 
     patch '/entries/:id' do 
-        @entry = Entry.find_by(id:params[:id])
+        @entry = Entry.find_by_id(params[:id])
         @entry.update(title: params[:title], content: params[:content])
         redirect "/entries/#{@entry.id}"
     end 
