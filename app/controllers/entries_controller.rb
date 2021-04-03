@@ -18,7 +18,7 @@ class EntriesController < ApplicationController
     #show route
 
     get '/entries/:id' do 
-        @entry = Entry.find(params[:id])
+        get_entry
         erb :'entries/show'
     end 
 
@@ -42,12 +42,11 @@ class EntriesController < ApplicationController
 
     patch '/entries/:id' do 
         get_entry
-        if @entry.user == current_user
+        
             @entry.update(title: params[:title], content: params[:content])
             redirect "/entries/#{@entry.id}"
         else
-            flash[:error] = "YOu are not allowed to make this edit"
-            redirect '/entries'
+           
         end
        
     end 
@@ -62,5 +61,12 @@ class EntriesController < ApplicationController
         def get_entry 
             @entry = Entry.find_by(id:params[:id])
         end
+
+        def redirect_if_not_user
+            if @entry.user != current_user
+                flash[:error] = "YOu are not allowed to make edits on this page"
+                redirect '/entries'
+            end
+        end 
     end 
 end
