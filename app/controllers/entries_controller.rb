@@ -35,7 +35,6 @@ class EntriesController < ApplicationController
         get_entry
         redirect_if_not_user
         erb :"/entries/edit"
-       
     end 
 
     patch '/entries/:id' do 
