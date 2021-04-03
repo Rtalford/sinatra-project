@@ -33,22 +33,16 @@ class EntriesController < ApplicationController
 
     get 'entries/:id/edit' do
         get_entry
-        if @entry.user == current_user
-            erb :"/post/edit"
-        else
-            flash[:error] = "YOu are not the owner of this account"
-            redirect '/entries'
+        redirect_if_not_user
+        erb :"/entries/edit"
+       
     end 
 
     patch '/entries/:id' do 
         get_entry
-        
-            @entry.update(title: params[:title], content: params[:content])
-            redirect "/entries/#{@entry.id}"
-        else
-           
-        end
-       
+        redirect_if_not_user
+        @entry.update(title: params[:title], content: params[:content])
+        redirect "/entries/#{@entry.id}" 
     end 
 
     delete '/entries/:id' do 
@@ -64,7 +58,7 @@ class EntriesController < ApplicationController
 
         def redirect_if_not_user
             if @entry.user != current_user
-                flash[:error] = "YOu are not allowed to make edits on this page"
+                flash[:error] = "You are not allowed to make edits on this page"
                 redirect '/entries'
             end
         end 
