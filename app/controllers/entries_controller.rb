@@ -32,7 +32,7 @@ class EntriesController < ApplicationController
     #create
 
     get 'entries/:id/edit' do
-        @entry = Entry.find_by(id:params[:id])
+        get_entry
         if @entry.user == current_user
             erb :"/post/edit"
         else
@@ -41,20 +41,26 @@ class EntriesController < ApplicationController
     end 
 
     patch '/entries/:id' do 
-        @entry = Entry.find_by_id(params[:id])
+        get_entry
         if @entry.user == current_user
             @entry.update(title: params[:title], content: params[:content])
             redirect "/entries/#{@entry.id}"
         else
-            flash[:error] = "YOu are not the owner of this account"
+            flash[:error] = "YOu are not allowed to make this edit"
             redirect '/entries'
         end
        
     end 
 
     delete '/entries/:id' do 
-        @entry = Entry.find_by(id:params[:id])
+        get_entry
         @entry.destroy
         redirect '/entries'
+    end 
+
+    Private 
+        def get_entry 
+            @entry = Entry.find_by(id:params[:id])
+        end
     end 
 end
