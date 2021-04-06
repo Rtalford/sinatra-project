@@ -59,7 +59,7 @@ class EntriesController < ApplicationController
             if @entry.user != current_user
                 flash[:error] = "You are not allowed to make edits on this page"
                 redirect '/entries'
-            end
+        
         end 
     end 
 end
