@@ -5,16 +5,16 @@ class UsersController < ApplicationController
     end 
 
     post '/signup' do 
-        user = User.new(params)
+        #user = User.new(params)
         binding.pry
-        if user.username.blank? || user.email.blank? || user.name.blank? || user.password.blank? || User.find_by_email(params[:email]) || User.find_by_username(params[:username])
+        # if user.username.blank? || user.email.blank? || user.name.blank? || user.password.blank? || User.find_by_email(params[:email]) || User.find_by_username(params[:username])
 
-            redirect '/signup'
-        else
-            user.save
-            session[:user_id] = user_id
-            redirect '/entries'
-        end 
+        #     redirect '/signup'
+        # else
+        #     user.save
+        #     session[:user_id] = user_id
+        #     redirect '/entries'
+        # end 
 
     end 
 

@@ -19,8 +19,8 @@ class EntriesController < ApplicationController
 
     get '/entries/:id' do 
         @entry = Entry.find_by(id:params[:id])
-        erb :'entries/show'
-        #erb :'entries/edit'
+        #erb :'entries/show'
+        erb :'entries/edit'
     end 
 
     post '/entries' do
