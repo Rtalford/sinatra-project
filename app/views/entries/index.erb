@@ -1,8 +1,9 @@
 <h1>Entry Index Page</h1>
 
-<% @entries.each do |p| %>
-    <p><%= p.title %> - <%= p.id %> 
-    <% if current_user == p.user %>
-    <a href="/entries/<%= p.id %>/edit">Edit</a> 
+<% @entries.each do |e| %>
+    <p><%= e.title %> - <%= e.id %> 
+    <% if current_user == e.user %>
+    <a href="/entries/<%= e.id %>/edit">Edit</a> 
     </p>
+<% end %>
 <% end %>

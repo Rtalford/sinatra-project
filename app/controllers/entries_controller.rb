@@ -20,6 +20,7 @@ class EntriesController < ApplicationController
     get '/entries/:id' do 
         @entry = Entry.find_by(id:params[:id])
         erb :'entries/show'
+        #erb :'entries/edit'
     end 
 
     post '/entries' do
@@ -41,7 +42,6 @@ class EntriesController < ApplicationController
         end
     end
 
-    end 
 
     patch '/entries/:id' do 
         @entry = Entry.find_by(id:params[:id])
@@ -60,9 +60,5 @@ class EntriesController < ApplicationController
         redirect '/entries'
         
     end 
-
-
-    
-
 
 end
