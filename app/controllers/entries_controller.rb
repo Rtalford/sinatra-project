@@ -1,13 +1,13 @@
 class EntriesController < ApplicationController
     
-    #index route 
+    
 
     get '/entries' do 
         @entries = Entry.all
         erb :'entries/index'
     end 
 
-    #new route
+
 
     get '/entries/new' do 
         erb :'entries/new'
@@ -15,7 +15,7 @@ class EntriesController < ApplicationController
 
     
 
-    #show route
+ 
 
     get '/entries/:id' do 
         @entry = Entry.find_by(id:params[:id])
@@ -30,7 +30,7 @@ class EntriesController < ApplicationController
        redirect "/entries/#{@entry.id}"
     end 
 
-    #create
+    
 
     get 'entries/:id/edit' do
         @entry = Entry.find_by(id:params[:id])
